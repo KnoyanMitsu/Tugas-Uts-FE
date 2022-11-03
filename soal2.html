@@ -22,7 +22,6 @@
                         <th>Harga Satuan </th>
                         <th>Jumlah Beli </th>
                         <th>Total</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +32,6 @@
                         <td><input class="form-control" type="number" id="hargaBarang" onchange="totaldandiskon()"></td>
                         <td><input class="form-control" type="number" id="jumlahBarang" onchange="totaldandiskon()"></td>
                         <td><input class="form-control" type="number" id="totalHarga" disabled onchange="totaldandiskon()"></td>
-                        <td><button  class="btn-danger btn removebtn">Hapus</td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -42,13 +40,12 @@
                         <td><input class="form-control" type="number" id="hargaBarang1" onchange="totaldandiskon()"></td>
                         <td><input class="form-control" type="number" id="jumlahBarang1" onchange="totaldandiskon()"></td>
                         <td><input class="form-control" type="number" id="totalHarga1" disabled onchange="totaldandiskon()"></td>
-                        <td><button  class="btn-danger btn removebtn">Hapus</td>
                     </tr>
                 </tbody>
             </table>
 
             <div>
-                <form>
+                <form id="form-id" onsubmit="totaldandiskon(this);" action="#">
                     <label for="name">Sub Total</label>
                     <input type="text" class="form-control" id="totalSemua">
                     <label for="name">Diskon</label>
@@ -63,9 +60,10 @@
                     <label for="name">Bayar</label>
                     <input type="text" class="form-control" id="Bayar">
                     <br>
-                    <button id="Submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" id="Submit" value="submit" />
                     <button type="reset" class="btn btn-danger">Batal</button>
                 </form>
+                
     </div>
     <script>
        function totaldandiskon(){
@@ -99,6 +97,18 @@
                 document.getElementById('GTotal').value = 0.05 * subtotal
             }
         }
+
+        //ALERT
+        var Submit = document.getElementById('form-id');
+        var bayar = document.getElementById('Bayar');
+        var gtoal = document.getElementById('GTotal');
+
+        document.getElementById("Submit").addEventListener("click", function () {
+            if(gtoal < bayar){
+                alert('uang anda tidak cukup')
+            }
+         });
+        
        </script>
 </body>
 
