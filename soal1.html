@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="ide.js"></script>
+</head>
+<body></body>
+        <div class="blur"></div>
+    <div class="container">
+            <!--Form-->
+        <div class="card form-1 my-lg-5">
+            <form action="Kirim.php" class="card-body shadow-lg" method="post" onclick="validasi()">
+                <h1 style="padding-bottom: 30px ;">Form Validation</h1>
+                <div class="row">
+                    <div class="col-lg">
+                        <h4 class="padding-bottom: 30px">Select the category</h4>
+                            <!--Select-->
+                            <div class="form-check" name="">
+                                <input class="form-check-input" type="radio" name="radiop" id="VIP" value="VIP">
+                                <label class="form-check-label" for="exampleRadios1">
+                                  VIP
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radiop" id="Premium" value="Premium">
+                                <label class="form-check-label" for="exampleRadios2">
+                                  Premium
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radiop" id="Basic" value="Basic" >
+                                <label class="form-check-label" for="exampleRadios3">
+                                  Basic
+                                </label>
+                              </div>
+                              <h4 class="padding-bottom: 30px">Select</h4>
+                            <!--CheckBox Select-->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Breakfast" name="checkbox">
+                                <label class="form-check-label" for="defaultCheck1">
+                                  Breakfast
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Lunch" name="checkbox" >
+                                <label class="form-check-label" for="defaultCheck2">
+                                  Lunch
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Dinner" name="checkbox" >
+                                <label class="form-check-label" for="defaultCheck2">
+                                  Dinner
+                                </label>
+                              </div>
+                    </div>
+                    <div class="col-lg">
+                            <p>Date: <input name="Date" class="form-control" type="date" id="Date" placeholder="" required></p> 
+                            <p>Name: <input name="Name" class="form-control" type="text" id="Name" placeholder="Knoyan" required></p>
+                            <p>Phone: <input name="Phone" class="form-control" type="tel" id="Phone" placeholder="628188912981" required></p>
+                            <textarea class="form-control" name="Message" id="Message" cols="30" rows="5" placeholder="Message:" required></textarea>
+                            <p>Send to email<br> <input class="form-control" type="email" name="Email" id="Email" autofocus required></p>
+                    
+                            <button type="submit" class="btn btn-primary">Send</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--Wilayah Script-->
+    <script>
+      function validasi(){
+          var date = document.getElementById('Date')
+          var nama = document.getElementById('Name')
+          var phone = document.getElementById('Phone')
+          var message = document.getElementById('Message')
+          var email = document.getElementById('Email')
+          if(date != "" && nama != "" && phone != "" && message != ""){
+            return true;
+          } else{
+            alert('Anda harus mengisi data dengan lengkap!')
+          }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="jquery-3.6.1.js"></script>
+    <script type="text/javascript" src="ide.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;" class="my-lg-5">TOKO Weakmarket</h1>
+            <table  class="table table-hover table-dark my-lg-5 output">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Jenis Barang</th>
+                        <th>Nama Barang </th>
+                        <th>Harga Satuan </th>
+                        <th>Jumlah Beli </th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="number" id="hargaBarang"></td>
+                        <td><input type="number" id="jumlahBarang"></td>
+                        <td><input type="number" id="totalHarga"></td>
+                        <td><button  class="btn-danger btn removebtn">Hapus</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="number" id="hargaBarang1"></td>
+                        <td><input type="number" id="jumlahBarang1"></td>
+                        <td><input type="number" id="totalHarga1"></td>
+                        <td><button  class="btn-danger btn removebtn">Hapus</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <form>
+                    <label for="name">Sub Total</label>
+                    <input type="text" class="form-control" id="STotal">
+                    <label for="name">Diskon</label>
+                    <input type="text" class="form-control" id="Diskon">
+                    <label for="name">Grand Total</label>
+                    <input type="text" class="form-control" id="GTotal">
+                    <label for="name">Bayar</label>
+                    <input type="text" class="form-control" id="Bayar">
+                    <br>
+                    <button id="Submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-danger">Batal</button>
+                </form>
+
+                <br><br>
+                <h1>Control</h1>
+                <form>
+                    <label for="name">Jenis Barang</label>
+                    <input type="text" class="form-control" id="barang" placeholder="Baju">
+                    <label for="name">Nama Barang</label>
+                    <input type="text" class="form-control" id="nama" placeholder="Baju Amogus">
+                    <label for="name">Harga Satuan</label>
+                    <input type="text" class="form-control" id="harga" placeholder="50000">
+                    <label for="name">Jumlah Beli</label>
+                    <input type="text" class="form-control" id="jumlah" placeholder="1">
+                    <br>
+                    <input type="button"  class="btn btn-primary send" placeholder="Add Row">
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </form>
+            </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+                $("#hargaBarang, #jumlahBarang, #hargaBarang1, #jumlahBarang1").keyup(function () {
+                    var hargaBarang = $("#hargaBarang").val();
+                    var jumlahBarang = $("#jumlahBarang").val();
+                    var hargaBarang1 = $("#hargaBarang1").val();
+                    var jumlahBarang1 = $("#jumlahBarang1").val();
+                    var totalHarga = parseInt(hargaBarang) * parseInt(jumlahBarang);
+                    $("#totalHarga").val(totalHarga);
+                    var totalHarga1 = parseInt(hargaBarang1) * parseInt(jumlahBarang1);
+                    $("#totalHarga1").val(totalHarga1);
+                    var totalSemua = parseInt(totalHarga) + parseInt(totalHarga1);
+                    $("#totalSemua").val(totalSemua);
+                    var totalSemua = parseInt(totalSemua);
+                });
+            }
+        )
+    </script>
+</body>
+
+
