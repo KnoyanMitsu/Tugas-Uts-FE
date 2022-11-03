@@ -10,8 +10,8 @@
     <script type="text/javascript" src="ide.js"></script>
     
 </head>
-<body>
-    <div class="container">
+<body style="background-image: url(img/Untitled-1.jpg);background-size: cover;">
+    <div class="container card">
         <h1 style="text-align: center;" class="my-lg-5">TOKO Weakmarket</h1>
             <table  class="table table-hover table-dark my-lg-5 output">
                 <thead>
@@ -53,13 +53,13 @@
                     <input type="text" class="form-control" id="totalSemua">
                     <label for="name">Diskon</label>
                     <select name="discont" id="discont" class="form-control">
-                        <option value="nodiscont">1</option>
+                        <option value="nodiscont"></option>
                         <option value="11">11%</option>
                         <option value="21">21%</option>
                         <option value="35">35%</option>
                     </select>
                     <label for="name">Grand Total</label>
-                    <input type="text" class="form-control" id="GTotal">
+                    <input type="number" class="form-control" id="GTotal">
                     <label for="name">Bayar</label>
                     <input type="text" class="form-control" id="Bayar">
                     <br>
@@ -69,50 +69,35 @@
     </div>
     <script>
        function totaldandiskon(){
+
         var hargabarang = document.getElementById('hargaBarang').value
         var jumlahBarang = document.getElementById('jumlahBarang').value
-        //Perkalian harga dan jumlah harga ke subtotal
         var total = hargabarang * jumlahBarang;
         document.getElementById('totalSemua').value = total
-
-        var subtotal = document.getElementById('totalSemua').value
-
-
-        //discount 
-        var diskon = document.getElementById('discont').value
-        var hasil = totalSemua * diskon;
 
         //tempat hasil lalu masuk ke value html
 
         document.getElementById('totalHarga').value = total
-        document.getElementById('GTotal').value = hasil
         document.getElementById('totalSemua').value = total
 
+        //Perkalian ke 2
+        var hargabarang1 = document.getElementById('hargaBarang1').value
+        var jumlahBarang1 = document.getElementById('jumlahBarang1').value
+        var total1 = hargabarang1 * jumlahBarang1;
+        document.getElementById('totalHarga1').value = total1
+
+        //hasil totalsemua
+        var subtotal = document.getElementById('totalSemua').value
 
         //if else discont
 
-
-        if (total > 252000){
-            const changeSelect = (e) =>{
-                const $select = document.querySelector('discont');
-                $select.value = '11'
+            if (subtotal > 257000){
+                document.getElementById('GTotal').value = 0.05 * subtotal
+            }else if (subtotal > 430000){
+                document.getElementById('GTotal').value = 0.05 * subtotal
+            }else if (subtotal > 645000){
+                document.getElementById('GTotal').value = 0.05 * subtotal
             }
-        }else if (total > 439000){
-            const changeSelect = (e) =>{
-                const $select = document.querySelector('discont');
-                $select.value = '21'
-            }
-        }else if (total > 640000){
-            const changeSelect = (e) =>{
-                const $select = document.querySelector('discont');
-                $select.value = '35'
-            }
-        }else {
-            const changeSelect = (e) =>{
-                const $select = document.querySelector('discont');
-                $select.value = 'nodiscont'
-        }
-    }   
         }
        </script>
 </body>
