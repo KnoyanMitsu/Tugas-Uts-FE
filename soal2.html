@@ -28,20 +28,20 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><input type="text"></td>
-                        <td><input type="text"></td>
-                        <td><input type="number" id="hargaBarang"></td>
-                        <td><input type="number" id="jumlahBarang"></td>
-                        <td><input type="number" id="totalHarga"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="number" id="hargaBarang" onchange="totaldandiskon()"></td>
+                        <td><input class="form-control" type="number" id="jumlahBarang" onchange="totaldandiskon()"></td>
+                        <td><input class="form-control" type="number" id="totalHarga" disabled onchange="totaldandiskon()"></td>
                         <td><button  class="btn-danger btn removebtn">Hapus</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><input type="text"></td>
-                        <td><input type="text"></td>
-                        <td><input type="number" id="hargaBarang1"></td>
-                        <td><input type="number" id="jumlahBarang1"></td>
-                        <td><input type="number" id="totalHarga1"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="number" id="hargaBarang1" onchange="totaldandiskon()"></td>
+                        <td><input class="form-control" type="number" id="jumlahBarang1" onchange="totaldandiskon()"></td>
+                        <td><input class="form-control" type="number" id="totalHarga1" disabled onchange="totaldandiskon()"></td>
                         <td><button  class="btn-danger btn removebtn">Hapus</td>
                     </tr>
                 </tbody>
@@ -50,9 +50,14 @@
             <div>
                 <form>
                     <label for="name">Sub Total</label>
-                    <input type="text" class="form-control" id="STotal">
+                    <input type="text" class="form-control" id="totalSemua">
                     <label for="name">Diskon</label>
-                    <input type="text" class="form-control" id="Diskon">
+                    <select name="discont" id="discont" class="form-control">
+                        <option value="nodiscont">1</option>
+                        <option value="11">11%</option>
+                        <option value="21">21%</option>
+                        <option value="35">35%</option>
+                    </select>
                     <label for="name">Grand Total</label>
                     <input type="text" class="form-control" id="GTotal">
                     <label for="name">Bayar</label>
@@ -61,43 +66,55 @@
                     <button id="Submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-danger">Batal</button>
                 </form>
-
-                <br><br>
-                <h1>Control</h1>
-                <form>
-                    <label for="name">Jenis Barang</label>
-                    <input type="text" class="form-control" id="barang" placeholder="Baju">
-                    <label for="name">Nama Barang</label>
-                    <input type="text" class="form-control" id="nama" placeholder="Baju Amogus">
-                    <label for="name">Harga Satuan</label>
-                    <input type="text" class="form-control" id="harga" placeholder="50000">
-                    <label for="name">Jumlah Beli</label>
-                    <input type="text" class="form-control" id="jumlah" placeholder="1">
-                    <br>
-                    <input type="button"  class="btn btn-primary send" placeholder="Add Row">
-                    <button type="reset" class="btn btn-danger">Reset</button>
-                </form>
-            </div>
     </div>
-    <script type="text/javascript">
-        $(document).ready(
-            function () {
-                $("#hargaBarang, #jumlahBarang, #hargaBarang1, #jumlahBarang1").keyup(function () {
-                    var hargaBarang = $("#hargaBarang").val();
-                    var jumlahBarang = $("#jumlahBarang").val();
-                    var hargaBarang1 = $("#hargaBarang1").val();
-                    var jumlahBarang1 = $("#jumlahBarang1").val();
-                    var totalHarga = parseInt(hargaBarang) * parseInt(jumlahBarang);
-                    $("#totalHarga").val(totalHarga);
-                    var totalHarga1 = parseInt(hargaBarang1) * parseInt(jumlahBarang1);
-                    $("#totalHarga1").val(totalHarga1);
-                    var totalSemua = parseInt(totalHarga) + parseInt(totalHarga1);
-                    $("#totalSemua").val(totalSemua);
-                    var totalSemua = parseInt(totalSemua);
-                });
+    <script>
+       function totaldandiskon(){
+        var hargabarang = document.getElementById('hargaBarang').value
+        var jumlahBarang = document.getElementById('jumlahBarang').value
+        //Perkalian harga dan jumlah harga ke subtotal
+        var total = hargabarang * jumlahBarang;
+        document.getElementById('totalSemua').value = total
+
+        var subtotal = document.getElementById('totalSemua').value
+
+
+        //discount 
+        var diskon = document.getElementById('discont').value
+        var hasil = totalSemua * diskon;
+
+        //tempat hasil lalu masuk ke value html
+
+        document.getElementById('totalHarga').value = total
+        document.getElementById('GTotal').value = hasil
+        document.getElementById('totalSemua').value = total
+
+
+        //if else discont
+
+
+        if (total > 252000){
+            const changeSelect = (e) =>{
+                const $select = document.querySelector('discont');
+                $select.value = '11'
             }
-        )
-    </script>
+        }else if (total > 439000){
+            const changeSelect = (e) =>{
+                const $select = document.querySelector('discont');
+                $select.value = '21'
+            }
+        }else if (total > 640000){
+            const changeSelect = (e) =>{
+                const $select = document.querySelector('discont');
+                $select.value = '35'
+            }
+        }else {
+            const changeSelect = (e) =>{
+                const $select = document.querySelector('discont');
+                $select.value = 'nodiscont'
+        }
+    }   
+        }
+       </script>
 </body>
 
 
