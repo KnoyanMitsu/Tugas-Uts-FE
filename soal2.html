@@ -60,7 +60,7 @@
                     <label for="name">Bayar</label>
                     <input type="text" class="form-control" id="Bayar">
                     <br>
-                    <input type="submit" class="btn btn-primary" id="Submit" value="submit" />
+                    <input type="button" class="btn btn-primary" id="Submit" value="Submit" />
                     <button type="reset" class="btn btn-danger">Batal</button>
                 </form>
                 
@@ -95,19 +95,19 @@
                 document.getElementById('GTotal').value = 0.05 * subtotal
             }else if (subtotal > 645000){
                 document.getElementById('GTotal').value = 0.05 * subtotal
-            }
-        }
-
-        //ALERT
-        var Submit = document.getElementById('form-id');
-        var bayar = document.getElementById('Bayar');
-        var gtoal = document.getElementById('GTotal');
+            }//ALERT
+        var Submit = document.getElementById('form-id').value
+        var bayar = document.getElementById('Bayar').value
+        var gtoal = document.getElementById('GTotal').value
 
         document.getElementById("Submit").addEventListener("click", function () {
             if(gtoal < bayar){
                 alert('uang anda tidak cukup')
             }
          });
+        }
+
+        
         
        </script>
 </body>
